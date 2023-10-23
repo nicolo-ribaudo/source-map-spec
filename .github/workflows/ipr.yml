@@ -16,8 +16,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-      - run: git log -2
-      - run: node scripts/ipr-check.js tc39/source-map-spec HEAD
+      - run: git log -2 ${{github.event.pull_request.head.ref}}
+      - run: node scripts/ipr-check.js tc39/source-map-spec ${{github.event.pull_request.head.ref}}
         env:
           GH_TOKEN: ${{ secrets.GH_IPR_TOKEN }}
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
