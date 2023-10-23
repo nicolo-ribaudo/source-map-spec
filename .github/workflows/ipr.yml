@@ -16,7 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-      - run: git log -2 ${{ github.head_ref || 'HEAD' }}
       - run: node scripts/ipr-check.js tc39/source-map-spec ${{ github.head_ref || 'HEAD' }}
         env:
           GH_TOKEN: ${{ secrets.GH_IPR_TOKEN }}
